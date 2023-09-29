@@ -7,11 +7,10 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+  const { data: currentUser } = useCurrentUser();
   if (!visible) {
     return null;
   }
-  const { data } = useCurrentUser();
-
   const images = [
     "/images/default-blue.png",
     "/images/default-red.png",
@@ -33,7 +32,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
           <img className="w-8 rounded-md" src={imgSrc} alt="profile-img" />
           <p className="text-white text-sm group-hover/item:underline">
             {" "}
-            {data?.name}{" "}
+            {currentUser?.name}{" "}
           </p>
         </div>
         <hr className="bg-gray-600 border-0 my-4 h-px" />
